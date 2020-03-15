@@ -44,13 +44,14 @@ const fillZeros = (size) => {
 
 // user presses a key for movement
 const keyPressed = (userKey, myGameBox) => {
-    if(userKey == 2){
+    
+    if(userKey == 2){  // for right direction
         for (let i=0; i<size; i++){
             myGameBox[i] = operationOnRow.slideAndSumOnRow(myGameBox[i])
         }
         //console.table(myGameBox)
         playGame(myGameBox); 
-    }else if(userKey == 1){
+    }else if(userKey == 1){   // for left direction
         for (let i=0; i<size; i++){
             let reverseArrayForLeftAllign = myGameBox[i].slice().reverse();
             let tempBox = [];
@@ -58,24 +59,24 @@ const keyPressed = (userKey, myGameBox) => {
         }
         //console.table(myGameBox)
         playGame(myGameBox);
-    }else if(userKey == 3){
-        let tempMatrixForRotate90clockwise = myGameBox;
-        tempMatrixForRotate90clockwise = rotation.rotateClockWise90(tempMatrixForRotate90clockwise)
+    }else if(userKey == 3){  // for up direction
+        let rotatedMatrix = myGameBox;
+        rotatedMatrix = rotation.rotateClockWise90(rotatedMatrix)
         for (let i=0; i<size; i++){
-            tempMatrixForRotate90clockwise[i] = operationOnRow.slideAndSumOnRow(tempMatrixForRotate90clockwise[i])
+            rotatedMatrix[i] = operationOnRow.slideAndSumOnRow(rotatedMatrix[i])
         }
-        tempMatrixForRotate90clockwise = rotation.rotateAntiClockWise90(tempMatrixForRotate90clockwise)
-        myGameBox = tempMatrixForRotate90clockwise;
+        rotatedMatrix = rotation.rotateAntiClockWise90(rotatedMatrix)
+        myGameBox = rotatedMatrix;
         //console.table(myGameBox)
         playGame(myGameBox);
-    }else if (userKey == 4){
-        let tempMatrixForRotate90AntiClockwise = myGameBox;
-        tempMatrixForRotate90AntiClockwise = rotation.rotateAntiClockWise90(tempMatrixForRotate90AntiClockwise)
+    }else if (userKey == 4){  // for down direction
+        let rotatedMatrix = myGameBox;
+        rotatedMatrix = rotation.rotateAntiClockWise90(rotatedMatrix)
         for (let i=0; i<size; i++){
-            tempMatrixForRotate90AntiClockwise[i] = operationOnRow.slideAndSumOnRow(tempMatrixForRotate90AntiClockwise[i])
+            rotatedMatrix[i] = operationOnRow.slideAndSumOnRow(rotatedMatrix[i])
         }
-        tempMatrixForRotate90AntiClockwise = rotation.rotateClockWise90(tempMatrixForRotate90AntiClockwise)
-        myGameBox = tempMatrixForRotate90AntiClockwise;
+        rotatedMatrix = rotation.rotateClockWise90(rotatedMatrix)
+        myGameBox = rotatedMatrix;
         //console.table(myGameBox)
         playGame(myGameBox);
     }
