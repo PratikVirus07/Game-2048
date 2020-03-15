@@ -10,13 +10,13 @@ let gameBox;
 
 
 // start the Game and initilize the board as 0
-function startGameAndInitializeBoard(){
+const startGameAndInitializeBoard = () => {
     gameBox = fillZeros([size, size]);
     playGame(gameBox);
 }
 
 // fill the board with 0s
-function fillZeros(size) {
+const fillZeros = (size) => {
     var array = [];
     for (var i = 0; i < size[0]; ++i) {
         array.push(size.length == 1 ? 0 : fillZeros(size.slice(1)));
@@ -25,7 +25,7 @@ function fillZeros(size) {
 }
 
 // loop through the game untill condition met
-async function playGame(myGameBox) { //changed
+ const playGame = async (myGameBox) => { //changed
   let gameOverResult = termination.isGameOver(myGameBox);
   let gameWon = termination.isGameWon(myGameBox);
   if(gameOverResult == false && gameWon== false ){
@@ -43,7 +43,7 @@ async function playGame(myGameBox) { //changed
 }
 
 // user presses a key for movement
-function keyPressed (userKey, myGameBox){
+const keyPressed = (userKey, myGameBox) => {
     if(userKey == 2){
         for (let i=0; i<size; i++){
             myGameBox[i] = operationOnRow.slideAndSumOnRow(myGameBox[i])

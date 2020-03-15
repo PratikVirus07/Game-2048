@@ -17,7 +17,7 @@ const askMove = [
           if (validMoves.includes(value)) {
             return true;
           }
-          return "Backspace & Please enter numbers between 1 & 4";
+          return "Please enter number between 1 and 4";
       }
     }
   }
